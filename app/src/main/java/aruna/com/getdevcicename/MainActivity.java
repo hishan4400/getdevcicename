@@ -13,7 +13,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //USE: adb shell settings list global
+        //Some devices uses "device_name" anothers uses "wifi_p2p_device_name"
         String deviceName = Settings.System.getString(getContentResolver(), "device_name");
+         Log.v("MainActivity", "system device_name: " + deviceName);
+        
+        deviceName = Settings.System.getString(getContentResolver(), "wifi_p2p_device_name");
+        
         Log.v("MainActivity", "system device_name: " + deviceName);
 
         BluetoothAdapter myDevice = BluetoothAdapter.getDefaultAdapter();
